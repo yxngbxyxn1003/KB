@@ -21,10 +21,17 @@
 
 <script>
 import Header from './components/Header.vue';
+import videos from './videos.json';
 
 export default {
   name: 'App',
   components: { Header },
+  // 추가함
+  provide() {
+    return {
+      videos,
+    };
+  },
 };
 </script>
 

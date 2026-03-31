@@ -19,10 +19,18 @@
 
 <script>
 import YoutubeVue3 from 'youtube-vue3';
+import { inject } from 'vue';
+import { useRoute } from 'vue-router';
+
 export default {
-  name: 'VideoPlayer',
+  // name: 'VideoPlayer',
+  name: 'Videos',
   components: { YoutubeVue3 },
   setup() {
+    // videos 정의가 없어서 교안에 없는 부분추가
+    const videos = inject('videos');
+    const route = useRoute();
+
     const stopVideo = () => {
       playerRef.value.player.stopVideo();
       router.push({ name: 'videos' });
@@ -43,6 +51,7 @@ export default {
       // playerRef,
       // stopVideo,
       // playPrev,
+      videos,
     };
   },
 };

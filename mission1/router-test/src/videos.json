@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "봄날은 간다",
+    "category": "발라드",
+    "youtubeId": "dQw4w9WgXcQ"
+  },
+  {
+    "id": 2,
+    "title": "여행을 떠나요",
+    "category": "여행",
+    "youtubeId": "3JZ_D3ELwOQ"
+  },
+  {
+    "id": 3,
+    "title": "공부할 때 듣는 음악",
+    "category": "스터디",
+    "youtubeId": "L_jWHffIx5E"
+  }
+]

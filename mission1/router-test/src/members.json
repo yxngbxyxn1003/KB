@@ -18,5 +18,65 @@
     "insta": "https://www.instagram.com/chulheedrum/",
     "facebook": "",
     "youtube": "https://www.youtube.com/channel/UCt4_srP6q_aPsmuZ3W3R-Uw"
+  },
+  {
+    "id": 3,
+    "name": "안이호",
+    "role": "보컬",
+    "photo": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F28%2F202111291643196641.gif",
+    "desc": "가수",
+    "insta": "",
+    "facebook": "",
+    "youtube": ""
+  },
+  {
+    "id": 4,
+    "name": "최수인",
+    "role": "보컬",
+    "photo": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F85041682-e69a-403d-bae8-acafcc9375a8.jpeg",
+    "desc": "가수",
+    "insta": "",
+    "facebook": "",
+    "youtube": ""
+  },
+  {
+    "id": 5,
+    "name": "오형석",
+    "role": "드럼",
+    "photo": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fd4e186d6-52e9-482b-aa75-536b5f496338.jpeg",
+    "desc": "드럼 연주가",
+    "insta": "",
+    "facebook": "",
+    "youtube": ""
+  },
+  {
+    "id": 6,
+    "name": "이재",
+    "role": "베이스",
+    "photo": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F60%2F201408191609365911.jpg",
+    "desc": "음악감독,베이스연주가,가수",
+    "insta": "",
+    "facebook": "",
+    "youtube": ""
+  },
+  {
+    "id": 7,
+    "name": "박수범",
+    "role": "보컬",
+    "photo": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fd12b6083-2f19-404f-bfda-eeab782fa9ff.jpeg",
+    "desc": "가수",
+    "insta": "",
+    "facebook": "",
+    "youtube": ""
+  },
+  {
+    "id": 8,
+    "name": "라서진",
+    "role": "보컬",
+    "photo": "https://search.pstatic.net/common?type=b&size=216&expire=1&refresh=true&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F57d5e585-d576-4885-bb03-96677c6e36b6.jpeg",
+    "desc": "가수",
+    "insta": "",
+    "facebook": "",
+    "youtube": ""
   }
 ]

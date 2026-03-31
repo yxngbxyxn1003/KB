@@ -19,11 +19,11 @@ export default {
     const router = useRouter();
     let videoInfo, currentIndex, prevVideoId, nextVideoId;
     videoInfo = reactive({
-      video: videos.find((v) => v.id === currentRoute.params.id),
-    });
+      video: videos.find((v) => v.id === Number(currentRoute.params.id)),
+    }); // Number 추가
 
     const getNavId = (to) => {
-      videoInfo.video = videos.find((v) => v.id === to.params.id);
+      videoInfo.video = videos.find((v) => v.id === Number(to.params.id)); // Number 추가
       currentIndex = videos.findIndex((v) => v.id === videoInfo.video.id);
       prevVideoId = videos[currentIndex - 1]
         ? videos[currentIndex - 1].id

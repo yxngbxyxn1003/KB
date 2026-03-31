@@ -10,7 +10,7 @@ import About from '@/pages/About.vue';
 import Members from '@/pages/Members.vue';
 import Videos from '@/pages/Videos.vue';
 import MemberInfo from '@/pages/MemberInfo.vue';
-import VideoPlayer from '@/pages/VideoPlalyer.vue';
+import VideoPlayer from '@/pages/VideoPlayer.vue';
 
 const membersIdGuard = (to, from) => {
   // members/:id 경로는 반드시 이전 경로가
