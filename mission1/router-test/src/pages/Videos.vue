@@ -14,45 +14,23 @@
         </router-link>
       </li>
     </ul>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import YoutubeVue3 from 'youtube-vue3';
 import { inject } from 'vue';
 import { useRoute } from 'vue-router';
 
 export default {
-  // name: 'VideoPlayer',
-  name: 'Videos',
-  components: { YoutubeVue3 },
+  name: 'videos',
   setup() {
-    // videos 정의가 없어서 교안에 없는 부분추가
     const videos = inject('videos');
-    const route = useRoute();
-
-    const stopVideo = () => {
-      playerRef.value.player.stopVideo();
-      router.push({ name: 'videos' });
+    const currentRoute = useRoute();
+    const playingVideo = (id) => {
+      return id === currentRoute.params.id ? 'list-group-item-secondary' : ' ';
     };
-    const playNext = () => {
-      const index = videos.findIndex((v) => v.id === videoInfo.video.id);
-      const nextVideo = videos[index + 1];
-      if (nextVideo) {
-        videoInfo.video = nextVideo;
-        router.push({ name: 'videos/id', params: { id: nextVideo.id } });
-      } else {
-        videoInfo.video = video[0];
-        router.push({ name: 'videos/id', params: { id: videos[0].id } });
-      }
-    };
-    return {
-      // //videoInfo,
-      // playerRef,
-      // stopVideo,
-      // playPrev,
-      videos,
-    };
+    return { playingVideo, videos };
   },
 };
 </script>

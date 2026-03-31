@@ -1,7 +1,27 @@
 <template>
-  <div>
-    <h2>VideoPlayer</h2>
+  <div class="modal">
+    <div class="box">
+      <div class="heading">
+        <span class="title">:: {{ videoInfo.video.title }}</span>
+        <span class="category">:: ({{ videoInfo.video.category }})</span>
+        <span class="float-end badge bg-secondary pointer" @click="stopVideo">
+          X
+        </span>
+      </div>
+      <div class="player">
+        <YoutubeVue3
+          ref="playerRef"
+          :videoid="videoInfo.video.id"
+          :autoplay="1"
+          :controls="1"
+          @ended="playNext"
+        />
+      </div>
+    </div>
   </div>
+  <i class="fa fa-backward ml-2 pointer" @click="playPrev"></i>
+  <i class="fa fa-stop ml-2 pointer" @click="stopVideo"></i>
+  <i class="fa fa-forward ml-2 pointer" @click="playNext"></i>
 </template>
 
 <script>
@@ -19,8 +39,13 @@ export default {
     const router = useRouter();
     let videoInfo, currentIndex, prevVideoId, nextVideoId;
     videoInfo = reactive({
-      video: videos.find((v) => v.id === Number(currentRoute.params.id)),
-    }); // Number 추가
+      video: videos.find((v) => v.id === Number(currentRoute.params.id)), // Number 추가
+    });
+
+    // const stopVideo = () => {
+    //   playerRef.value.player.stopVideo();
+    //   router.push('/videos');
+    // }
 
     const getNavId = (to) => {
       videoInfo.video = videos.find((v) => v.id === Number(to.params.id)); // Number 추가
