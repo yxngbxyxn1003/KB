@@ -39,16 +39,11 @@ export default {
     const router = useRouter();
     let videoInfo, currentIndex, prevVideoId, nextVideoId;
     videoInfo = reactive({
-      video: videos.find((v) => v.id === Number(currentRoute.params.id)), // Number 추가
+      video: videos.find((v) => v.id === currentRoute.params.id),
     });
 
-    // const stopVideo = () => {
-    //   playerRef.value.player.stopVideo();
-    //   router.push('/videos');
-    // }
-
     const getNavId = (to) => {
-      videoInfo.video = videos.find((v) => v.id === Number(to.params.id)); // Number 추가
+      videoInfo.video = videos.find((v) => v.id === to.params.id);
       currentIndex = videos.findIndex((v) => v.id === videoInfo.video.id);
       prevVideoId = videos[currentIndex - 1]
         ? videos[currentIndex - 1].id
@@ -65,12 +60,12 @@ export default {
       router.push({ name: 'videos' });
     };
     const playNext = () => {
-      if (nextVideoId)
+      if (nextVideo)
         router.push({ name: 'videos/id', params: { id: nextVideoId } });
       else router.push({ name: 'videos/id', params: { id: videos[0].id } });
     };
     const playPrev = () => {
-      if (prevVideoId)
+      if (prevVideo)
         router.push({ name: 'videos/id', params: { id: prevVideoId } });
     };
     onBeforeRouteUpdate((to) => {

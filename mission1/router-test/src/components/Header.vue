@@ -22,7 +22,7 @@
         </li>
         <li class="nav-item">
           <router-link class="nav-link" :to="{ name: 'videos' }"
-            >역할</router-link
+            >영상</router-link
           >
         </li>
       </ul>

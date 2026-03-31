@@ -33,7 +33,7 @@ const router = createRouter({
       beforeEnter: membersIdGuard,
     },
     {
-      path: '/videos',
+      path: '/songs',
       name: 'videos',
       component: Videos,
       children: [{ path: ':id', name: 'videos/id', component: VideoPlayer }],
