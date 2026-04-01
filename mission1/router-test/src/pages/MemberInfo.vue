@@ -30,6 +30,8 @@
 import { useRoute } from 'vue-router';
 import members from '@/members.json';
 export default {
+  // 전달된 id를 꺼내서 id로 json 에서 개인  정보 검색 한 후
+  // 개인정보 return 하면 template에 출력 가능
   name: 'MemberInfo',
   setup() {
     const currentRoute = useRoute();

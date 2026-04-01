@@ -2,7 +2,6 @@ import {
   createRouter,
   createWebHistory,
   isNavigationFailure,
-  // isNavigationFailure,
 } from 'vue-router';
 
 import Home from '@/pages/Home.vue';
@@ -22,6 +21,7 @@ const membersIdGuard = (to, from) => {
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  // 요청주소 경로(path) 하나 당, 컴포넌트 하나 설정, {path : '경로' , component: 랜더링할 컴포넌트 이름}
   routes: [
     { path: '/', name: 'home', component: Home },
     { path: '/about', name: 'about', component: About },

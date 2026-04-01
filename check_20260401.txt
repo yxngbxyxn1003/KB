@@ -1,0 +1,125 @@
+[vue-router 추가 부분 체크사항]
+
+1. 프로젝트 생성할 때
+    npm init vue [프로젝트명]
+        이 때 Router 부분을 화살표와 스페이스바를 활용하여 활성화하기
+
+2. 프로젝트 구조 살펴보기
+    src/views 폴더 생성 
+        예제 코드에 관한 컴포넌트
+        => 보통 우리는 src/pages 폴더를 활용 예정임.
+    src/router 폴더 및 내부에 index.js 파일 생성
+        예제 코드 부분이 추가되어 있음
+        => 내 코드로 변경될 부분
+
+3. main.js 정보 보기 (추가 부분만 보기)
+    import router from './router'
+        index.js의 경우 파일명 생략 가능
+            다른 이름인 경우 파일명까지 지정해야 import 처리됨.
+    app.use(router)
+        import한 router를 vue에서 사용하도록 등록
+
+(옵션) 만약 초기 설정 시 Router를 처리하지 않았다면?
+    src/router/index.js 파일을 만들고 createRouter() 등 router 객체 정의 필요
+    src/main.js에 3번 등록 필요함.
+    vue-router 패키지 설치 (단!! 터미널 내 경로 체크하기)
+        npm install vue-router 
+    
+(옵션) bootstrap@5를 사용한다면? 전역으로 등록하는 방법
+    패키지 설치(단!! 터미널 내 경로 체크하기)
+        npm install bootstrap@5
+    src/main.js에 import 등록
+        import 'bootstrap/dist/css/bootstrap.css';
+            => 이거는 기억을 못하므로 import 입력 후 '' 입력하여 bootstrap 입력하면 힌트 활용하기
+            => 자동 완성 기능 또는 힌트를 주는 ctrl + space 활용하기 
+                macOS의 경우 자동완성 기능 단축키 설정 필요할 수 있음.
+
+4. src/views 폴더 자체를 삭제하기
+    단!!, src/router/index.js나 src/App.vue에서 import 하고 있다면 서버 실행 시 에러 발생 가능
+
+5. src/pages 폴더 만들기
+    Router에 연결되는 컴포넌트들 위치. 즉, 경로에 따른 보여줄 페이지들이 들어갈 폴더
+        => 실제 <RouterView /> 부분에 연결되는 컴포넌트 파일 위치 
+            <router-view /> 사용 가능
+
+6. src/pages/ 폴더 내 컴포넌트 파일 만들기
+    <RouterView />에 보여줄 실제 컴포넌트 파일
+
+7. src/router/index.js 파일 수정하기
+    const router = createRouter({
+
+    });
+
+    export default router;
+        router 정의 및 export 부분 체크하기
+        url 경로에 따른 컴포넌트 관계 routes: 내용 처리하기
+
+    1. 사용할 컴포넌트 import 하기
+        1-1. 즉시 로딩(eager loading - static import)
+            미리 로딩해오는 방식
+        1-2. 지연 로딩(lazy loading - dynamic import)의 경우 routes: 등록 시 component 부분에서 import() 활용 
+            접근할 때 로딩해오는 방식  
+    2. history => 초기 상태 코드 유지 가능
+        const router = createRouter({
+            history: createWebHistory(import.meta.env.BASE_URL),
+        });
+            히스토리 기능으로 뒤로가기 등에 적용 가능
+    3. routes 값 정의하기
+        const router = createRouter({
+            routes: [
+                {
+                    path: '[url 경로]',
+                    name: '[이름 별칭]',
+                    component: [component이름]
+                },
+                {
+                    path: '[url 경로]',
+                    name: '[이름 별칭]',
+                    component: () => import('[컴포넌트 경로]')
+                },
+            ]
+        });
+        
+            name 속성 이용하기 (나중에 경로 하드코딩 등 불필요한 수정 작업에 유리함.)
+                단!!, <RouterLink :to= > 속성 등 데이터 연결 작업들이 필요할 수 있음.
+    4. 기본 설정되어 있으나 중요한 부분
+        export default router
+            router 객체 내보내기 (createRouter() 처리 후의 객체)
+
+8. 6번에서 만든 파일에 컴포넌트 내용 채우기
+    필요하면 자식 컴포넌트(src/components/ 폴더)를 만들어서 연결작업해도 됨.
+
+9. App.vue(루트 컴포넌트) 또는 <RouterView /> 태그를 넣을 컴포넌트 파일을 찾아서 적용하기
+    <RouterView /> 또는 <router-view/> 
+        url에 따라 실제 붙는 컴포넌트는 
+            src/router/index.js (일반적인 경우 경로)에 
+            routes: 부분에 정의되어 있음.
+        ** 이 부분이 있어야지 url에 따른 컴포넌트가 화면에 출력됨.
+            a태그 기능과 유사해보이나 실제로는 SPA내에서 url에 따른 컴포넌트만 교체된 상태 
+                새로고침을 하지 않는 이상 현재 페이지는 계속 index.html 초기상태 유지 상태
+                => url 정보를 활용해서 동적으로 컴포넌트만 교체됨.
+            a태그의 경우에는 MPA으로 실제로는 페이지 자체가 이동된 것!!
+    <RouterLink></RouterLink> 또는 <router-link></router-link>
+        클릭 이벤트 발생할 때 이동 처리할 url 정보 또는 name 속성을 활용하여 작성함
+        to 속성에 url 정보를 입력하거나
+            예: <RouterLink to="/about">소개</RouterLink></RouterLink>
+        :to 속성을 활용하여 v-bind로 객체 전달 (name 속성 활용 - url 하드코딩 아님!!)
+            예: <RouterLink :to="{name: 'admin'}">관리자</RouterLink>
+
+        
+        
+
+
+[오늘의 추가 미션 - 과제 제출 시 추가]
+    1. src/pages/ 폴더 아래에 나만의 컴포넌트(.vue) 파일 생성하기
+    2. 컴포넌트 내에 vue-router를 활용한 간단한 코드 작성하기
+        <template> 부분에는 내 정보 간단히 보이는 페이지 만들기
+            (민감한 정보 제외하고 이름 취미 등 작성하기)
+        + Home으로 이동 처리
+            a. 버튼 하나와 메서드 처리 
+            b. 또 다른 방식으로 Home 이동 처리하는 <route-view> 또는 <RouterView> 태그 활용하기	(버전 2개  일반 to 사용 / :to 사용 버전)
+            => 가능하면 b는 둘 다 해서 Home 이동 처리 총 3개 버전 만들기	
+        <script setup> 부분에는  Home으로 이동 처리하는 메서드 정의하기
+            버튼에 연결할 메서드
+    3. router 경로에 내 컴포넌트 파일을 찾을 수 있는 경로를 추가하기 + name 옵션을 활용하기 (이니셜 사용 등)
+        예: ~~/kyh url로 이동하면 내 컴포넌트 띄우기
