@@ -75,3 +75,47 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.box {
+  background-color: white;
+  margin: 80px auto;
+  max-width: 500px;
+  min-width: 100px;
+  min-height: 350px;
+  font: 13px 'verdana';
+  padding: 10px 10px 10px 10px;
+}
+.box div {
+  padding: 0;
+  display: block;
+  margin: 10px 0 0 0;
+}
+.box .heading {
+  background: #33a17f;
+  font-weight: 300;
+  text-align: left;
+  color: #fff;
+  margin: 5px 0 5px 0;
+  padding: 10px;
+  min-width: 200px;
+  max-width: 500px;
+}
+.box .player {
+  background: white;
+}
+.pointer {
+  cursor: pointer;
+}
+</style>

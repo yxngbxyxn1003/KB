@@ -1,43 +1,37 @@
 <template>
   <div class="container">
     <Header />
-    <div class="card card-body border-0 pl-3 pr-3 pt-0">
-      <div class="row">
-        <div class="col-md-3 border">
-          <router-view name="left"></router-view>
-        </div>
-        <div class="col-md-9 border">
-          <router-view></router-view>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 border">
-          <router-view name="footer"></router-view>
-        </div>
-      </div>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue';
-import videos from './videos.json';
+import Header from '@/components/Header.vue';
+import { provide } from 'vue';
 
 export default {
   name: 'App',
   components: { Header },
-  // 추가함
-  provide() {
-    return {
-      videos,
-    };
+  setup() {
+    provide('videos', [
+      { id: 't0BHhqw_Ecc', title: '범 내려온다', category: 'official' },
+      { id: 'FrCkLMxnlMI', title: '좌우나졸', category: 'official' },
+      {
+        id: '7O0hIrgMcCg',
+        title: '별주부가 울며 여짜오되',
+        category: 'official',
+      },
+      { id: 'MJD_fAdqNQc', title: '어류도감', category: 'official' },
+      { id: 'SmTRaSg2fTQ', title: '범 내려온다', category: '온스테이지2.0' },
+      { id: 'B_X7n0AaLqA', title: '범 내려온다(서울)', category: '관광공사' },
+      { id: 'sV1jq6RFSXc', title: '어류도감(부산)', category: '관광공사' },
+      { id: 'dInPs_VHqSM', title: '좌우나졸(전주)', category: '관광공사' },
+    ]);
   },
 };
 </script>
-
 <style>
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
-
 .container {
   text-align: center;
   margin-top: 10px;
